@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     private let user = User.getUser()
 
@@ -40,8 +40,10 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let tabController = segue.destination as? UITabBarController
+        let tabController = segue.destination as? TabBarViewController
         let personFullName = "\(user.person.name) \(user.person.surname)"
+        
+        tabController?.profileTabTitle = personFullName
         
         tabController?.viewControllers?.forEach({ viewController in
             if let homeVC = viewController as? HomeViewController {

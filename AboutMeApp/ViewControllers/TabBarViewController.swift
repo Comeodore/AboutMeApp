@@ -7,11 +7,20 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController {
+final class TabBarViewController: UITabBarController {
+    
+    var profileTabTitle: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTabBar()
+        self.viewControllers?[1].tabBarItem.title = profileTabTitle ?? "Profile Name"
+    }
+}
 
+extension TabBarViewController {
+    private func setupTabBar() {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
         tabBar.standardAppearance = tabBarAppearance
